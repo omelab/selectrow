@@ -1,0 +1,21 @@
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+table{
+	width: 500px;
+	border-collapse: collapse;
+}
+table td{
+	border: 1px solid $ddd;
+	padding: 5px;
+}
+.edit, .delete{
+	display: none;
+}
+tr.selected{
+	background: green;
+	color: #fff;
+}

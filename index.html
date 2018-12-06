@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<button class="edit" id="edit">Edit</button>
+	<button class="delete" id="delete" data-id="">Delete</button>
+	<table>
+		<tr>
+			<td>1</td>
+			<td>hellow</td>
+			<td>row</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>hellow2</td>
+			<td>row2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>hellow3</td>
+			<td>row3</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>hellow4</td>
+			<td>row4</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>hellow5</td>
+			<td>row5</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>hellow6</td>
+			<td>row6</td>
+		</tr>
+	</table>
+	<script>
+		$(document).ready(function(){
+			var slect = [];
+			$('tr').click(function(){
+				if( $(this).toggleClass('selected') ){
+					var id = $(this).children("td:eq(0)").text();
+					if ($(this).hasClass('selected')) {	
+						slect.push(id);
+					}else{
+						var index = slect.indexOf(id);
+						slect.splice(index,1);
+					}
+					if (slect.length>0 && slect.length<2) {
+						$('#edit').show();
+						$('#edit').attr('data-id', slect);
+					}
+					else{
+						$('#edit').hide();
+						$('#edit').removeAttr('data-id');
+					}
+
+					if (slect.length>0){
+						$('#delete').show();
+						$('#delete').attr('data-id', slect);
+					}else{
+						$('#delete').hide();
+						$('#delete').removeAttr('data-id');
+					}
+					console.log(slect);
+				}				
+			})
+		})
+	</script>
+</body>
+</html>
